@@ -1,0 +1,310 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+
+    /* Colors */
+    /* Primary */
+    --darkGray: hsl(0, 0%, 63%);
+    --black: hsl(0, 0%, 0%);
+    --white: hsl(0, 0%, 100%);
+    --veryDarkGray: hsl(0, 0%, 27%);
+}
+body{
+    font-size: 12px;
+    font-family: 'Spartan', sans-serif;
+}
+.wrapper{
+    width: 100%;
+    /* max-width: 1110px; */
+    padding: 1.5em;
+}
+/* header */
+.header{
+    background-color: transparent;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+}
+.header .wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+/* Menu */
+.checkbox-menu{
+    display: none;
+}
+.button-menu{
+    display: block;
+    background-image: url("images/icon-hamburger.svg");
+    width: 18px;
+    height: 14px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+}
+.checkbox-menu:checked ~ .button-menu{
+    background-image: url("images/icon-close.svg");
+}
+.checkbox-menu:checked ~ .menu-header{
+    display: flex;
+}
+.menu-header{
+    background: white;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 85px;
+    /* display: none; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+    display: none;
+}
+.menu-header::after{
+    content: "";
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    top: 85px;
+    height: calc(100vh - 85px);
+}
+.menu-item{
+    margin-right: 1.5em;
+}
+.menu-item:hover{
+    border-bottom: 2px solid white;
+}
+.menu-item-link{
+    text-decoration: none;
+    font-weight: bolder;
+    color: black;
+}
+
+/* Hero */
+.hero{
+    position: relative;
+    z-index: 1;
+}
+.hero-background{
+    background-image: url("images/mobile-image-hero-1.jpg");
+    height: 360px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.hero-background-selector{
+    width: 110px;
+    height: 60px;
+    background: black;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+}
+.hero-background-selector a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+.hero-background-selector a img{
+    width: 10px;
+    height: auto;
+}
+/* Hero body */
+.hero-background-body{
+    padding:  4em 0;
+}
+.hero-background-title{
+    font-size: 2.5em;
+    letter-spacing: -2px;
+}
+.hero-background-text{
+    margin-top: 1.5em;
+    color: var(--darkGray);
+    font-size: 1.05em;
+    line-height: 1.6;
+}
+.hero-background-link{
+    display: block;
+    margin-top: 3.5em;
+    letter-spacing: 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 1.15em;
+    cursor: pointer;
+}
+.hero-background-link:hover{
+    color: var(--darkGray);
+}
+.hero-background-link:hover > svg path{
+    fill: var(--darkGray);
+}
+
+/* about furniture */
+.about-furniture img{
+    width: 100%;
+}
+.about-furniture-body{
+    padding: 4em 1.5em;
+}
+.about-furniture-title{
+    text-transform: uppercase;
+    font-size: 1.3em;
+    letter-spacing: 4px;
+}
+.about-furniture-text{
+    margin-top: 1.2em;
+    color: var(--darkGray);
+    line-height: 1.7;
+    font-size: 1.05em;
+}
+
+/* Media querys */
+@media screen and (min-width: 800px){
+    .hero-background{
+        background-image: url("images/desktop-image-hero-1.jpg");
+    }
+}
+@media screen and (min-width: 1440px){
+
+    /* Header */   
+    .header .wrapper{
+        display: grid;
+        align-items: center;
+        justify-content: left;
+        padding: 5em;
+    }
+    .header-logo{
+        grid-column: 1/2;
+        grid-row: 1/2;
+        width: 67px;
+    }
+    .header-menu{
+        grid-column: 2/3;
+        grid-row: 1/2;
+        margin-left: 5em;
+    }
+    .menu-item{
+        margin-right: 5em;
+        width: 20px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        top: 3px;
+    }
+    .menu-header .menu-item-link{
+        color: white;
+        font-weight: lighter;
+        font-size: 1.1em;
+    }
+    .header-menu{
+        display: block;        
+    }
+    .menu-header{
+        background: transparent;
+        position: initial;
+        right: initial;
+        top: initial;
+        justify-content: flex-start;
+        height: initial;
+        display: flex;
+    }
+    .menu-header::after{
+        display: none;
+    }
+    .button-menu{
+        display: none;
+    }
+
+    /* Hero */
+    .hero{
+        display: grid;
+        grid-template-areas: "picture body";
+        grid-template-columns: 1fr 600px;      
+        top: 0;
+    }
+    .hero-background{
+        grid-area:  picture;
+        height: 536px;
+        background-image: url("images/desktop-image-hero-1.jpg");
+    }
+    .hero-background-body{
+        grid-area: body;
+        padding: 8.5em 7em;
+    }
+    .hero-background-title{
+        font-size: 3em;
+    }
+    .hero-background-selector{
+        right: -160px;
+        width: 160px;
+        height: 80px;
+    }
+    .hero-background-selector a img{
+        width: 15px;
+        border: none;
+    }
+    .hero-background-selector a:hover{
+        background: var(--veryDarkGray);
+    }
+    .hero-background-text{
+        font-size: .95em;
+    }
+    /* our furniture */
+    .about-furniture{
+        display: grid;
+        grid-template-columns: 420px 1fr 440px;
+    }
+    .about-furniture-body{
+        padding: 6em 4em 0 4em;
+    }
+    .about-furniture-title{
+        font-size: 1em;
+    }
+    .about-furniture-text{
+        font-size: .95em;
+    }
+}
+@media screen and (min-width: 1800px){
+    .header-logo{
+        width: 100px;
+    }
+    .menu-header .menu-item-link{
+        font-size: 1.3em;
+    }
+    .hero{
+        grid-template-columns: 1fr 800px;    
+    }
+    .about-furniture{
+        grid-template-columns: 620px 1fr 640px;
+    }
+    .hero-background-title{
+        font-size: 4em;
+    }
+    .about-furniture-title{
+        font-size: 1.5em;
+    }
+    .about-furniture-text{
+        font-size: 1.1em;
+    }
+    .about-furniture-body{
+        padding: 8em 4em 0 4em;
+    }
+}
